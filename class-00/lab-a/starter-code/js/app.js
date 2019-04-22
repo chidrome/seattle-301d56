@@ -36,7 +36,7 @@ function displayPics(){
     }
   }
   console.log(rando);
-  // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the variable declaration from `var to `let`.
+  // In a sentence or two, explain why the previous line of code threw an error when we changed the variable declaration from `var to `let`.
   // because let is function scoped and doesn't exists outside of the function.
   console.log(viewed);
 

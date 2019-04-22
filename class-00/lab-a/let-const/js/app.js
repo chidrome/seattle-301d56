@@ -30,7 +30,7 @@ function makeRandom() {
 
 function displayPics(){
   while(viewed.length < 6){
-    var rando = makeRandom();
+    let rando = makeRandom();
     while(!viewed.includes(rando)){
       viewed.push(rando);
     }
@@ -40,8 +40,8 @@ function displayPics(){
   // because let is function scoped and doesn't exists outside of the function.
   console.log(viewed);
 
-  for (var i = 0; i < 3; i++){
-    var temp = viewed.shift();
+  for (let i = 0; i < 3; i++){
+    let temp = viewed.shift();
     pics[i].src = allProducts[temp].path;
     pics[i].id = allProducts[temp].name;
     allProducts[temp].views += 1;
@@ -59,7 +59,7 @@ function handleClick(event) {
     showList();
     makeChart();
   }
-  for(var i = 0; i < names.length; i++){
+  for(let i = 0; i < names.length; i++){
     if(event.target.id === allProducts[i].name) {
       allProducts[i].votes += 1;
       console.log(event.target.id + ' has ' + allProducts[i].votes + ' votes in ' + allProducts[i].views + ' views');
@@ -71,8 +71,8 @@ function handleClick(event) {
 }
 
 function showList() {
-  for(var i = 0; i < allProducts.length; i++) {
-    var liEl = document.createElement('li');
+  for(let i = 0; i < allProducts.length; i++) {
+    let liEl = document.createElement('li');
     liEl.textContent = allProducts[i].name + ' has ' + allProducts[i].votes + ' votes in ' + allProducts[i].views + ' views';
     list.appendChild(liEl);
   }
@@ -88,7 +88,7 @@ function makeChartData(){
 
 function makeChart(){
   makeChartData();
-  var ctx = document.getElementById('chartypants').getContext('2d');
+  const ctx = document.getElementById('chartypants').getContext('2d');
   new Chart(ctx, { //eslint-disable-line
     type: 'bar',
     data: {
@@ -128,7 +128,7 @@ if(localStorage.busmall){
   allProducts = JSON.parse(localStorage.busmall);
 } else {
   console.log('There is no local storage data; initialize app by creating instances');
-  for(var i = 0; i < names.length; i++) {
+  for(let i = 0; i < names.length; i++) {
     new Product(names[i]);
   }
 }
